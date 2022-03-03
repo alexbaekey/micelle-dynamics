@@ -11,7 +11,7 @@ import os
 import sys
 
 
-np.set_printoptions(threshold=sys.maxsize)
+np.set_printoptions(threshold=np.inf,linewidth=150)
 
 
 class grid(object):

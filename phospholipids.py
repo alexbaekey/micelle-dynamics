@@ -87,27 +87,27 @@ class lipid(object):\
                 self.Lstate==0 and 
                 self.Rstate==0 and 
                 self.Bstate==0 and
-                self.Lpos[0]+move_posx<self.grid.max_x
+                self.Lpos[0]+move_posx<grid.max_x
                 and
                 self.Lpos[0]+move_posy>0
                 and
-                self.Lpos[1]+move_posy<self.grid.max_y
+                self.Lpos[1]+move_posy<grid.max_y
                 and
                 self.Lpos[1]+move_posy>0
                 and
-                self.Rpos[0]+move_posx<self.grid.max_x
+                self.Rpos[0]+move_posx<grid.max_x
                 and
                 self.Rpos[0]+move_posy>0
                 and
-                self.Rpos[1]+move_posy<self.grid.max_y
+                self.Rpos[1]+move_posy<grid.max_y
                 and
                 self.Rpos[1]+move_posy>0
                 and
-                self.Bpos[0]+move_posx<self.grid.max_x
+                self.Bpos[0]+move_posx<grid.max_x
                 and
                 self.Bpos[0]+move_posy>0
                 and
-                self.Bpos[1]+move_posy<self.grid.max_y
+                self.Bpos[1]+move_posy<grid.max_y
                 and
                 self.Bpos[1]+move_posy>0            
         ):
@@ -179,6 +179,26 @@ class lipid(object):\
 
 
     def update_state(self,grid):
+
+        # idea to fix orientation issue
+        # make agents into a 3square L shape
+        # need to account for all 4 orientations
+        # this would fix self-identification problem
+        #
+        # LR
+        # B
+        #
+        # self assembly (right wall)would then look like:
+        #
+        # 
+        #  
+        #  BL
+        #   R
+        #  BL 
+        #   R
+        #
+        #
+
         #check if an L is above/beneath an R on wall, check if B is left/right of B on wall
         # *note* commented out positions for surrounding spots that aren't considered
         if(self.Lstate ==0):

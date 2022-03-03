@@ -12,10 +12,10 @@ import time
 
 # parameters
 
-num_agents  = 5 
-max_x       = 20 
-max_y       = 20
-seed        = 10 #TODO figure out details of stability regulation
+num_agents  = 500 
+max_x       = 40 
+max_y       = 40
+seed        = 20 #TODO figure out details of stability regulation
 timestep    = 0.01 # TODO equivalence with seconds, minutes, whatever
 max_step    = 200
 radii = [1]
@@ -38,7 +38,7 @@ def run(radius):
     while(grid_.assembled != 1 and ts < max_step):
         for i in range(num_agents):
             agents[i].update_pos(grid_)
-            #agents[i].update_state(grid_)
+            agents[i].update_state(grid_)
             grid_.update_grid(agents)
             grid_.print_grid(ts,'radius'+str(radius))
             time.sleep(0.2)
