@@ -83,7 +83,34 @@ class lipid(object):\
             self.Rpos = self.pos+self.Rpos
             self.Bpos = self.pos+self.Bpos
             self.disrupted=0
-        elif(self.disrupted==0 and self.Lstate==0 and self.Rstate==0 and self.Bstate==0):
+        elif(self.disrupted==0 and 
+                self.Lstate==0 and 
+                self.Rstate==0 and 
+                self.Bstate==0 and
+                self.Lpos[0]+move_posx<self.grid.max_x
+                and
+                self.Lpos[0]+move_posy>0
+                and
+                self.Lpos[1]+move_posy<self.grid.max_y
+                and
+                self.Lpos[1]+move_posy>0
+                and
+                self.Rpos[0]+move_posx<self.grid.max_x
+                and
+                self.Rpos[0]+move_posy>0
+                and
+                self.Rpos[1]+move_posy<self.grid.max_y
+                and
+                self.Rpos[1]+move_posy>0
+                and
+                self.Bpos[0]+move_posx<self.grid.max_x
+                and
+                self.Bpos[0]+move_posy>0
+                and
+                self.Bpos[1]+move_posy<self.grid.max_y
+                and
+                self.Bpos[1]+move_posy>0            
+        ):
             self.pos =(
                 self.pos[0] + move_posx, 
                 self.pos[1] + move_posy

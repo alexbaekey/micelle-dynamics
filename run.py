@@ -41,13 +41,13 @@ def run(radius):
             #agents[i].update_state(grid_)
             grid_.update_grid(agents)
             grid_.print_grid(ts,'radius'+str(radius))
-            time.sleep(1)
+            time.sleep(0.2)
             ts=ts+1*timestep
     if(grid_.assembled == 1):
         start = ts
         grid_.radiate()
         while(grid_.assembled != 1 and ts < max_step):
-            for i in num_agents:
+            for i in range(num_agents):
                 agents[i].update_pos(grid_)
                 agents[i].update_state(grid_)
                 grid_.update_grid(agents)
@@ -65,9 +65,11 @@ def run(radius):
 if __name__ == "__main__":
     # run each beam radius case 10 times, collect time to stable reconstruction, plot radius against reconstruction time
     total_runs = runs_per_rad*len(radii)
-    results = np.zeros((len(radii),10))
+    results = np.zeros((len(radii),runs_per_rad))
     for i in range(len(radii)):
         for j in range(runs_per_rad):
             results[i][j]=run(radii[i])
-    plt.plot(results)
-    plt.savefig(os.path.join('results'+'final_analysis.jpg'))
+    x = radii
+    y = np.mean(results,axis=1)
+    #plt.plot(x,y)
+    #plt.save_fig(os.path.join('results'+'final_analysis.jpg'))
