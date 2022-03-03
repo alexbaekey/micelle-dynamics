@@ -1,6 +1,18 @@
+
+
+# grid.py, environment for lipid agents
+
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import sys
+
+
+np.set_printoptions(threshold=sys.maxsize)
+
 
 class grid(object):
 
@@ -41,6 +53,7 @@ class grid(object):
 
     def print_grid(self,timestep,name):
         filename = name+str(timestep)
+        print(self.occupation)
         np.savetxt(os.path.join('results'+'/'+filename),self.occupation)
             
 

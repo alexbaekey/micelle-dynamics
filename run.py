@@ -1,21 +1,27 @@
 #! /bin/bash
 
+# run.py, main script utilizing agents and environment
+
+
+
 from phospholipids import lipid
 from grid import grid
 import numpy as np
 import matplotlib as plt
-
+import time
 
 # parameters
 
-num_agents  = 500
-max_x       = 300 
-max_y       = 300
-seed        = 100 #TODO figure out details of stability regulation
-timestep    = 0.01 # TODO equivalence with seconds
-max_step    = 1000
-radii = [5,10,15,20,25,30,35,40,45,50]
-runs_per_rad = 10
+num_agents  = 5 
+max_x       = 20 
+max_y       = 20
+seed        = 10 #TODO figure out details of stability regulation
+timestep    = 0.01 # TODO equivalence with seconds, minutes, whatever
+max_step    = 200
+radii = [1]
+#radii = [5,10,15,20,25,30,35,40,45,50]
+runs_per_rad = 1
+#runs_per_rad = 10
 agents = []
 
 def run(radius):
@@ -32,10 +38,11 @@ def run(radius):
     while(grid_.assembled != 1 and ts < max_step):
         for i in range(num_agents):
             agents[i].update_pos(grid_)
-            agents[i].update_state(grid_)
+            #agents[i].update_state(grid_)
             grid_.update_grid(agents)
             grid_.print_grid(ts,'radius'+str(radius))
-            ts=ts+1
+            time.sleep(1)
+            ts=ts+1*timestep
     if(grid_.assembled == 1):
         start = ts
         grid_.radiate()
@@ -45,7 +52,7 @@ def run(radius):
                 agents[i].update_state(grid_)
                 grid_.update_grid(agents)
                 grid_.print_grid(ts,'radius'+str(radius))
-                ts=ts+1
+                ts=ts+1*timestep
         if(grid_.assembled == 1):
             end = ts
             print("completed!")
