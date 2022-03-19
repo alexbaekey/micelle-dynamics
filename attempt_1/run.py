@@ -12,7 +12,7 @@ import time
 
 # parameters
 
-num_agents  = 500 
+num_agents  = 50 
 max_x       = 40 
 max_y       = 40
 seed        = 20 #TODO figure out details of stability regulation
@@ -38,11 +38,11 @@ def run(radius):
     while(grid_.assembled != 1 and ts < max_step):
         for i in range(num_agents):
             agents[i].update_pos(grid_)
-            agents[i].update_state(grid_)
+            #agents[i].update_state(grid_)
             grid_.update_grid(agents)
-            grid_.print_grid(ts,'radius'+str(radius))
-            time.sleep(0.2)
-            ts=ts+1*timestep
+        grid_.print_grid(ts,'radius'+str(radius))
+        time.sleep(0.2)
+        ts=ts+1*timestep
     if(grid_.assembled == 1):
         start = ts
         grid_.radiate()

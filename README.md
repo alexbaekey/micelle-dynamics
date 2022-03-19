@@ -15,6 +15,10 @@ implementation steps:
 7. plot dynamics of reconstruction time vs radius/energy of blast
 
 
+MAJOR REWORK 3/19/22
+
+1. visualization will now be in Mesa
+2. central mechanism changed from agent attractive force to agent hydrophyllic/hydrophobic behavior
 
 
 
